@@ -69,6 +69,82 @@
        </widget>
       </item>
       <item>
+       <widget class="QToolButton" name="lockscreenButton">
+        <property name="text">
+         <string>Lock screen</string>
+        </property>
+        <property name="icon">
+         <iconset theme="system-lock-screen">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>64</width>
+          <height>64</height>
+         </size>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextUnderIcon</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::MinimumExpanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QToolButton" name="suspendButton">
+        <property name="text">
+         <string>Suspend</string>
+        </property>
+        <property name="icon">
+         <iconset theme="system-suspend">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>64</width>
+          <height>64</height>
+         </size>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextUnderIcon</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="hibernateButton">
+        <property name="text">
+         <string>Hibernate</string>
+        </property>
+        <property name="icon">
+         <iconset theme="system-suspend-hibernate">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>64</width>
+          <height>64</height>
+         </size>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextUnderIcon</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QToolButton" name="rebootButton">
         <property name="text">
          <string>Reboot</string>
@@ -95,66 +171,6 @@
         </property>
         <property name="icon">
          <iconset theme="system-shutdown">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>64</width>
-          <height>64</height>
-         </size>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="suspendButton">
-        <property name="text">
-         <string>Suspend</string>
-        </property>
-        <property name="icon">
-         <iconset theme="system-suspend">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>64</width>
-          <height>64</height>
-         </size>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="lockscreenButton">
-        <property name="text">
-         <string>Lock screen</string>
-        </property>
-        <property name="icon">
-         <iconset theme="system-lock-screen">
-          <normaloff>.</normaloff>.</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>64</width>
-          <height>64</height>
-         </size>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextUnderIcon</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="hibernateButton">
-        <property name="text">
-         <string>Hibernate</string>
-        </property>
-        <property name="icon">
-         <iconset theme="system-suspend-hibernate">
           <normaloff>.</normaloff>.</iconset>
         </property>
         <property name="iconSize">
