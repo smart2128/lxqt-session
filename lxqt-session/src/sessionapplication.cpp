@@ -23,6 +23,7 @@
 #include "UdevNotifier.h"
 #include "numlock.h"
 #include <unistd.h>
+#include <csignal>
 #include <LXQt/Settings>
 #include <QProcess>
 #include <QDebug>
@@ -33,6 +34,7 @@
 
 SessionApplication::SessionApplication(int& argc, char** argv) : LXQt::Application(argc, argv)
 {
+    listenToUnixSignals({SIGINT, SIGTERM, SIGQUIT, SIGHUP});
     char* winmanager = NULL;
     int c;
     while ((c = getopt (argc, argv, "c:w:")) != -1)
@@ -56,6 +58,7 @@ SessionApplication::SessionApplication(int& argc, char** argv) : LXQt::Applicati
     qputenv("LXQT_SESSION_CONFIG", configName.toUtf8());
 
     modman = new LXQtModuleManager(winmanager);
+    connect(this, &LXQt::Application::unixSignal, modman, &LXQtModuleManager::logout);
     new SessionDBusAdaptor(modman);
     // connect to D-Bus and register as an object:
     QDBusConnection::sessionBus().registerService("org.lxqt.session");
@@ -266,15 +269,25 @@ void SessionApplication::loadFontSettings(LXQt::Settings& settings)
 #define DEFAULT_PTR_MAP_SIZE 128
 void SessionApplication::setLeftHandedMouse(bool mouse_left_handed)
 {
-    unsigned char *buttons;
+    unsigned char *buttons, *more_buttons;
     int n_buttons, i;
     int idx_1 = 0, idx_3 = 1;
 
     buttons = (unsigned char*)malloc(DEFAULT_PTR_MAP_SIZE);
+    if (!buttons)
+    {
+        return;
+    }
     n_buttons = XGetPointerMapping(QX11Info::display(), buttons, DEFAULT_PTR_MAP_SIZE);
     if (n_buttons > DEFAULT_PTR_MAP_SIZE)
     {
-        buttons = (unsigned char*)realloc(buttons, n_buttons);
+        more_buttons = (unsigned char*)realloc(buttons, n_buttons);
+        if (!more_buttons)
+        {
+            free(buttons);
+            return;
+        }
+        buttons = more_buttons;
         n_buttons = XGetPointerMapping(QX11Info::display(), buttons, n_buttons);
     }
 
